@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Notes App</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark text-white">
+
+<div class="container mt-5">
+
+    <h1 class="text-center">🚀 My Notes App</h1>
+
+    <div class="card p-4 mt-4">
+        <h3>Add a Note</h3>
+
+
+    <form method="POST">
+        <ul>
+            {% for note in notes %}
+                <li>{{ note.text }}</li>
+                <a href="/delete/{{ note.id }}/">Delete</a>
+            {% endfor %}
+        </ul>
+        {% csrf_token %}
+        <input type="text" name="note" class="form-control mb-3" placeholder="Enter your note">
+
+        <button class="btn btn-primary">Add Note</button>
+
+    </form>
+    </div>
+
+</div>
+
+</body>
+</html>
