@@ -13,17 +13,28 @@
 
     <h1 class="text-center">🚀 My Notes App</h1>
 
-    <div class="card p-4 mt-4">
-        <h3>Add a Note</h3>
+    <div class="container mt-5">
+  <h2>Edit Note</h2>
+ <form method="POST">
+    {% csrf_token %}
+    
+    <input type="text" name="note" class="form-control mb-3" placeholder="Enter your note">
+    
+    <button class="btn btn-success">Add Note</button>
+</form>
+</div>
 
-
-    <form method="POST">
-        <ul>
-            {% for note in notes %}
-                <li>{{ note.text }}</li>
-                <a href="/delete/{{ note.id }}/">Delete</a>
-            {% endfor %}
-        </ul>
+<ul class="list-group mt-4">
+  {% for note in notes %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      {{ note.text }}
+      <div>
+        <a href="/edit/{{ note.id }}/" class="btn btn-sm btn-warning">Edit</a>
+        <a href="/delete/{{ note.id }}/" class="btn btn-sm btn-danger">Delete</a>
+      </div>
+    </li>
+  {% endfor %}
+</ul>
         {% csrf_token %}
         <input type="text" name="note" class="form-control mb-3" placeholder="Enter your note">
 

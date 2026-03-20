@@ -1,0 +1,8 @@
+<form method="POST">
+    {% csrf_token %}
+    
+    <input type="text" name="note" value="{{ note.text }}" class="form-control mb-3">
+    
+    <button class="btn btn-primary">Update</button>
+    <a href="/" class="btn btn-secondary">Cancel</a>
+</form>
